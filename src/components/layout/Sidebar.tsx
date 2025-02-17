@@ -2,7 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Logo from "../components/assets/logo.png";
+import Logo from "@/components/assets/logo.svg";
+import { SearchCheckIcon, SearchIcon } from "lucide-react";
 
 const Sidebar = ({ visible, setVisible }: any) => {
   const [authkey, setAuthkey] = useState<string>("");
@@ -45,9 +46,9 @@ const Sidebar = ({ visible, setVisible }: any) => {
   return (
     <div className="bg-[#04041E] text-white lg:flex lg:flex-row lg:items-center lg:justify-between lg:px-4 lg:py-4">
       {/* Logo */}
-      <div className="flex items-center justify-between px-4 py-4 lg:py-0">
+      <div className="flex items-center justify-between p-4 lg:py-0">
         <Link href="/">
-          <Image src={Logo} alt="Logo" height={30} width={100} className="lg:h-6 md:h-6 h-4 w-auto" />
+          <Image src={Logo} alt="Logo" height={30} width={100} className="lg:h-6 h-4 w-auto " />
         </Link>
         <button
           className="relative flex flex-col justify-center items-center w-8 h-8 lg:hidden"
@@ -111,6 +112,9 @@ const Sidebar = ({ visible, setVisible }: any) => {
 
       {/* Extras */}
       <div className="hidden lg:flex lg:items-center lg:gap-4">
+        <div className="border border-bordercolor rounded-lg p-2 text-bordercolor flex justify-center">
+        <SearchIcon className="mx-2"/>  <input type="search" name="" placeholder="Search" id="" className="bg-transparent text-bordercolor" />
+        </div>
         <div
           className="cursor-pointer"
           onClick={() => router.push(sidebarConfig.extras.rewards.path)}
